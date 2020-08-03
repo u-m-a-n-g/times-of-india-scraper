@@ -6,15 +6,15 @@ from bs4 import BeautifulSoup
 from sqlite import SQLite, SQLiteTable
 from IPython.core.debugger import Tracer
 
-LOG_FILE = '/Users/deedy/Dev/Python/times-of-india-scraper/toidaemon.log'
-PID_FILE_PATH = '/Users/deedy/Dev/Python/times-of-india-scraper/toi.pid'
-DB_PATH = '/Users/deedy/Dropbox/toi_2000_2015/toi.db'
+LOG_FILE = '/home/umang/Desktop/folder/sps/times-of-india-scraper/toidaemon.log'
+PID_FILE_PATH = '/home/umang/Desktop/folder/sps/times-of-india-scraper/toi.pid'
+DB_PATH = '/home/umang/Desktop/folder/sps/times-of-india-scraper/toi.db'
 
 class ToiScraper():
   TABLE_NAME = 'articles'
   TABLE_SCHEMA = [(u'ds', u'text(10)'), (u'title', u'text'), (u'url', u'text')]
   # Manually observed minimum date on TOI
-  INIT_DATE = (2000, 1, 18)
+  INIT_DATE = (2020, 1, 1)
   MIN_ENTRIES = 600
   MAX_SLEEP = 3600
 

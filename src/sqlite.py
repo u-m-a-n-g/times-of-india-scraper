@@ -34,14 +34,14 @@ class SQLiteTable:
   def where(self, conditions):
     get_command = """SELECT * FROM {0} WHERE {1};""".format(
       self.name,
-      " AND ".join(["{0} = {1}".format(k,repr(v)) for k, v in conditions.iteritems()])
+      " AND ".join(["{0} = {1}".format(k,repr(v)) for k, v in conditions.items()])
     )
     return self.db.execute(get_command, get=True)
 
   def del_where(self, conditions):
     get_command = """DELETE FROM {0} WHERE {1};""".format(
       self.name,
-      " AND ".join(["{0} = {1}".format(k,repr(v)) for k, v in conditions.iteritems()])
+      " AND ".join(["{0} = {1}".format(k,repr(v)) for k, v in conditions.items()])
     )
     return self.db.execute(get_command, get=True)
 
