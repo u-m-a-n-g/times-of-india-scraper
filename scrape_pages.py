@@ -2,8 +2,10 @@ import requests
 import csv
 from bs4 import BeautifulSoup
 import lazynlp
+import progressbar
 import pickle
 import json
+import sys
 
 def load_article(url):
     '''
@@ -29,10 +31,11 @@ url_list = load_csv('covid_links.csv')
 
 # Now create new list of dicts with fields: title,url,date,text
 
-ctr = 0
+start_idx = int(sys.argv[1])
+end_idx = min(int(sys.argv[2]),len(url_list))
+
 articles = []
-for ctr in range(0,200):
-    print(ctr)
+for ctr in progressbar.progressbar(range(start_idx,end_idx)):
     row = url_list[ctr]
     try:
         obj = row.copy()
@@ -41,5 +44,6 @@ for ctr in range(0,200):
     except IndexError as e:
         print("Index error: " + str(e) + str(row))
 
-with open('articles.json', 'w') as f:
+filename = "articles_" + str(start_idx) + "_" + str(end_idx) + ".json";
+with open(filename, 'w') as f:
     json.dump(articles,f)
